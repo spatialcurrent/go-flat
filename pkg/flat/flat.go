@@ -10,9 +10,11 @@ package flat
 
 import (
 	"reflect"
+	"time"
 )
 
 // Flat recursively flattens a slice of slices to a maximum depth.
+// Flat attempts to maintain the slice type if possible.
 // If maxDepth is less than zero, then there is no maximum depth.
 func FlatDepth(in interface{}, depth int, maxDepth int) interface{} {
 
@@ -22,15 +24,19 @@ func FlatDepth(in interface{}, depth int, maxDepth int) interface{} {
 		return []string{in}
 	case int:
 		return []int{in}
+	case int64:
+		return []int64{in}
 	case float64:
 		return []float64{in}
 	case byte:
 		return []byte{in}
+	case time.Time:
+		return []time.Time{in}
 	}
 
 	// If a literal slice or array, then return the slice directly
 	switch in.(type) {
-	case []string, []int, []float64, []byte:
+	case []string, []int, []int64, []float64, []byte, []time.Time:
 		return in
 	}
 
@@ -44,6 +50,12 @@ func FlatDepth(in interface{}, depth int, maxDepth int) interface{} {
 	k := t.Kind()
 
 	if k == reflect.Array || k == reflect.Slice {
+		if v.Len() == 0 {
+			return in
+		}
+		if v.Len() == 1 {
+			return FlatDepth(v.Index(0).Interface(), depth+1, maxDepth)
+		}
 		out := reflect.MakeSlice(t, 0, v.Len())
 		for i := 0; i < v.Len(); i++ {
 			vi := v.Index(i).Interface()
@@ -69,6 +81,7 @@ func FlatDepth(in interface{}, depth int, maxDepth int) interface{} {
 }
 
 // Flat recursively flattens a slice of slices.
+// Flat attempts to maintain the slice type if possible.
 func Flat(in interface{}) interface{} {
 	return FlatDepth(in, 0, -1)
 }

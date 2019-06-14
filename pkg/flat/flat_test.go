@@ -9,6 +9,7 @@ package flat
 
 import (
 	"testing"
+	"time"
 )
 
 import (
@@ -33,10 +34,26 @@ func TestFlatIntSlice(t *testing.T) {
 	assert.Equal(t, []int{1, 2, 3}, out)
 }
 
+func TestFlatInt64Slice(t *testing.T) {
+	in := []interface{}{
+		[]int64{1, 2, 3},
+	}
+	out := Flat(in)
+	assert.Equal(t, []int64{1, 2, 3}, out)
+}
+
 func TestFlatStringSlice(t *testing.T) {
 	in := []string{"a", "b", "c"}
 	out := Flat(in)
 	assert.Equal(t, []string{"a", "b", "c"}, out)
+}
+
+func TestFlatTimeSlice(t *testing.T) {
+	in := []interface{}{
+		[]time.Time{time.Now(), time.Now()},
+	}
+	out := Flat(in)
+	assert.Equal(t, in[0], out)
 }
 
 func TestFlatStrings(t *testing.T) {
