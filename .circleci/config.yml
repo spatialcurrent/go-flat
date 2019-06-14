@@ -30,6 +30,6 @@ workflows:
   main:
     jobs:
       - pre_deps_golang
-      - test:
+      - test_go:
           requires:
             - pre_deps_golang

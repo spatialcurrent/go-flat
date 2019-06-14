@@ -22,7 +22,7 @@ See [flat](https://godoc.org/github.com/spatialcurrent/go-flat/pkg/flat) in GoDo
 
 # Examples
 
-See [examples](https://godoc.org/github.com/spatialcurrent/go-flat/pkg/flat/#pkg-examples) in GoDoc.
+See [examples](https://godoc.org/github.com/spatialcurrent/go-flat/pkg/flat) in GoDoc.
 
 # Testing
 
