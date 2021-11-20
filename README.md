@@ -18,11 +18,11 @@ import (
 )
 ```
 
-See [flat](https://godoc.org/github.com/spatialcurrent/go-flat/pkg/flat) in GoDoc for information on how to use Go API.  See the tests for ways to use this library.
+See [flat](https://pkg.go.dev/github.com/spatialcurrent/go-flat/pkg/flat) in the docs for information on how to use Go API.  See the tests for ways to use this library.
 
 # Examples
 
-See [examples](https://godoc.org/github.com/spatialcurrent/go-flat/pkg/flat) in GoDoc.
+See [examples](https://pkg.go.dev/github.com/spatialcurrent/go-flat/pkg/flat) in the docs.
 
 # Testing
 

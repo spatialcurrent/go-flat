@@ -13,8 +13,8 @@ import (
 	"time"
 )
 
-// Flat recursively flattens a slice of slices to a maximum depth.
-// Flat attempts to maintain the slice type if possible.
+// FlatDepth recursively flattens a slice of slices to a maximum depth.
+// FlatDepth attempts to maintain the slice type if possible.
 // If maxDepth is less than zero, then there is no maximum depth.
 func FlatDepth(in interface{}, depth int, maxDepth int) interface{} {
 
