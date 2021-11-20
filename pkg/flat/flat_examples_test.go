@@ -25,7 +25,7 @@ func ExampleFlat() {
 		"f",
 	}
 	out := Flat(in)
-	fmt.Println(fmt.Sprintf("%#v", out))
+	fmt.Printf("%#v\n", out)
 	// Output: []interface {}{"a", "b", "c", 1, 2, 3, "d", "e", "f"}
 }
 
@@ -45,6 +45,6 @@ func ExampleFlatDepth() {
 	}
 	maxDepth := 1
 	out := FlatDepth(in, 0, maxDepth)
-	fmt.Println(fmt.Sprintf("%#v", out))
+	fmt.Printf("%#v\n", out)
 	// Output: []interface {}{"a", "b", []interface {}{"c", "d", "e"}}
 }
